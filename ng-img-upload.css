@@ -1,0 +1,26 @@
+/* made by Tom Reunes */
+.img-upl-img:hover{
+    opacity: 0.75;
+}
+
+.img-up-img.del{
+    opacity: 0.5;
+}
+
+.img-up-img .del:hover{
+    opacity: 0.25;
+}
+
+.del{
+    opacity:0.5;
+}
+
+#dropfield {
+    background:#DDD;
+    display:block;
+    height:200px;
+}
+
+#dropfield.over {
+    background:orange;
+}
