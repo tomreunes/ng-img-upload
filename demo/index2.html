@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/ng-img-upload/ng-img-upload.css"/>
+</head>
+<body ng-app="MyApp">
+<div class="container" ng-controller="myController as vm">
+    <h1>Demo image-upload-directive</h1>
+    <div class="jumbotron">
+        Text
+    </div>
+    <div class="row">
+        <section class="col-sm-3">
+            <div id="dropfield" ng-file-drop="vm.addTemporaryFiles($files)" ng-file-drag-over-class="over">
+                Drop here
+            </div>
+            <input type="file" ng-file-select="vm.addTemporaryFiles($files)" class="form-control" multiple accept="image/*"/>
+            <br>
+            <span class="btn btn-danger btn-block" ng-click="vm.save()">Confirm changes</span>
+            <span class="btn btn-danger btn-block" ng-click="vm.tmpSave()">Test save</span>
+        </section>
+        <section class="col-sm-9">
+            <div class="panel panel-default row">
+                <h2 class="col-xs-12">All</h2>
+                <img ng-repeat="img in vm.images" ng-src="{{img.src}}"
+                     class="img-responsive col-xs-6 col-sm-4 col-md-3 img-upl-img" ng-click="img.del = !img.del"
+                     ng-class="{del:img.del}"/>
+                <span class="col-xs-12">&nbsp;</span>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+<script src="../ng-img-upload.js"></script>
+<script src="app2.js"></script>
+
+
+</body>
+</html>

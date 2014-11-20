@@ -6,19 +6,19 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="bower_components/ng-img-upload/ng-img-upload.css"/>
 </head>
-<body ng-app="MyApp">
+<body ng-app="MyApp" ng-controller="TR_ImageUploadController as trI">
 <div class="container" ng-controller="myController as vm">
     <!--<img-upl-init host="'http://localhost:3000/api/images/'"></img-upl-init>-->
     <h1>Demo image-upload-directive</h1>
 
     <div class="jumbotron">
         Text
-    </div>
+    </div><!--ng-controller="TR_ImageUploadController as trI"-->
     <div class="row">
         <section class="col-sm-3">
-            <img-upl-dropzone></img-upl-dropzone>
+            <img-upl-dropzone add-tempfiles="trI.addTemporaryFiles($files)"></img-upl-dropzone>
             <br>
-            <span class="btn btn-danger btn-block" ng-click="vm.hihi()">Confirm changes</span>
+            <span class="btn btn-danger btn-block" ng-click="trI.save()">Confirm changes</span>
         </section>
         <section class="col-sm-9">
             <img-upl-images></img-upl-images>
@@ -28,7 +28,7 @@
 <script src="bower_components/underscore/underscore-min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
-<script src="bower_components/ng-img-upload/ng-img-upload.js"></script>
+<script src="../ng-img-upload.js"></script>
 <script src="app.js"></script>
 
 

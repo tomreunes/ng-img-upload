@@ -1,7 +1,7 @@
 {
   "name": "ng-img-upload",
   "main": "ng-img-upload.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "authors": [
     "Tom Reunes <tomreunes@gmail.com>"
   ],
