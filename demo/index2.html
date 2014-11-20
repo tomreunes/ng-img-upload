@@ -25,7 +25,7 @@
         <section class="col-sm-9">
             <div class="panel panel-default row">
                 <h2 class="col-xs-12">All</h2>
-                <img ng-repeat="img in vm.images" ng-src="{{img.src}}"
+                <img ng-repeat="img in vm.images()" ng-src="{{img.src}}"
                      class="img-responsive col-xs-6 col-sm-4 col-md-3 img-upl-img" ng-click="img.del = !img.del"
                      ng-class="{del:img.del}"/>
                 <span class="col-xs-12">&nbsp;</span>

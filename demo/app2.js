@@ -10,14 +10,17 @@
             console.log($tr.getImages());
         };*/
         //vm.$tr = $tr;
-        vm.images = [];
+        var images = [];
+        vm.images = function(){
+            return images;
+        };
         vm.save = save;
         vm.addTemporaryFiles = addTemporaryFiles;
         function save() {
             var defer = $q.defer();
-            ImgUploadService.confirm(vm.images).then(function (result) {
-                vm.images = result;
-                defer.resolve(vm.images);
+            ImgUploadService.confirm(images).then(function (result) {
+                images = result;
+                defer.resolve(images);
             });
             return defer.promise;
         }
@@ -36,7 +39,7 @@
                 var uploaded = _.map(data, function (resource) {
                     return ImgUploadService.mapFileDataToImage(resource);
                 });
-                vm.images = vm.images.concat(uploaded);
+                images = images.concat(uploaded);
             });
         }
 
