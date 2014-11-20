@@ -4,13 +4,15 @@
     app.controller('myController',['$tr','$q',function(ImgUploadService,$q){
         var vm = this;
         ImgUploadService.config({host: 'http://localhost:3000'});
+        var Image = ImgUploadService.Image;
         //$tr.setInitialImages(['71WWeCk3.jpg','QyhACJn.jpg']);
         /*vm.hihi = function(){
             $tr.confirm();
             console.log($tr.getImages());
         };*/
         //vm.$tr = $tr;
-        var images = [];
+        var image_array = ['myvsC-gx.jpg'];
+        var images = _.map(image_array,function(input){return new Image(input,undefined,false,false)});
         vm.images = function(){
             return images;
         };

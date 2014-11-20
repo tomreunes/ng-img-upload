@@ -26,9 +26,8 @@
         this.filename = filename;
         if (src != undefined) {
             this.src = src;
-        }
-        else {
-            this.src = configuration.host + filename;
+        }else{
+            this.src = configuration.host+configuration.path.get+filename;
         }
         if (del != undefined) {
             this.del = del;
@@ -41,7 +40,6 @@
     }
 
     var app = angular.module('TR.imageUploadDirective', ['angularFileUpload']);
-    console.log(app);
     var ImgUploadController = ['$tr', function (ImgUploadService) {
         console.log('new controller created');
         var vm = this;
@@ -73,10 +71,6 @@
 
     app.controller('TR_ImageUploadController', ImgUploadController);
 
-    app.service('TR.ImageUploadService', ['$upload', '$http', function ($upload, $http) {
-
-    }]);
-
     app.service('$tr', ['$upload', '$http', '$q', function ($upload, $http, $q) {
 
 
@@ -86,6 +80,7 @@
         this.getImages = getImages;
         this.uploadFiles = upload;
         this.mapFileDataToImage = mapFileDataToImage;
+        this.Image = Image;
 
         function confirm(images) {
             /*var deferred = $q.defer();
@@ -121,7 +116,7 @@
             var myDeferred = $q.defer();
             var requests = [$q.defer()];
             angular.forEach(getImages(images, {temporary: true, del: false}), function (img) {
-                var p = $http.put(configuration.host + configuration.path.delete + img.filename);
+                var p = $http.put(configuration.host + configuration.path.put + img.filename);
                 requests.push(p);
                 p.success(function (filedata) {
                     var newImg = mapFileDataToImage(filedata);
@@ -132,7 +127,7 @@
                 });
             });
             angular.forEach(getImages(images, {del: true}), function (img) {
-                var p = $http.delete(configuration.host + configuration.path.put + img.filename);
+                var p = $http.delete(configuration.host + configuration.path.delete + img.filename);
                 requests.push(p);
                 p.success(function () {
                     images = _.without(images, img);
